@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-(aoqjx-oybxrd@envv4m^2w6jcu5ipijy!nzk71_a8)(#-^ai6
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'emiu.emeafu', '162.243.173.228']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'emiu.emeafu', 'www.emiu.emeafu.com', '162.243.173.228']
 
 
 # Application definition
@@ -73,24 +73,24 @@ WSGI_APPLICATION = 'emiu.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'emiu_db',
-#         'USER': 'emiu_db',
-#         'PASSWORD': 'pass.p1985',
-#         'HOST': 'localhost',
-#         'PORT': '',
-#     }
-# }
-
-
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'emiu_db',
+        'USER': 'emiu_db',
+        'PASSWORD': 'pass.p1985',
+        'HOST': 'localhost',
+        'PORT': '',
     }
 }
+
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
 
 
 # Password validation

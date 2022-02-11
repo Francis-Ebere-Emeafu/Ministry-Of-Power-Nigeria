@@ -85,12 +85,6 @@ DATABASES = {
 }
 
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
 
 
 # Password validation
@@ -138,10 +132,10 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(STATIC_ROOT, "media")
 
 try:
-    from local_settings import *
+    from . import local_settings
 except ImportError:
     pass
-from . import local_settings
+# from . import local_settings
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field

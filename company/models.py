@@ -16,4 +16,4 @@ class Company(models.Model):
     logo = models.ImageField(upload_to='logos/')
 
     def __str__(self):
-        return "{}, {}, {}".format(self.user, self.phone, self.first_name)
+        return "{}, {}, {}".format(self.company_name, self.phone, self.email)

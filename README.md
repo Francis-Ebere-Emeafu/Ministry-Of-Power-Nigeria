@@ -32,6 +32,7 @@ Project Architecture and Components of the EMIU Platform
     - Name
     - Abbreviations
     - Contact Person
+    - Departmental Head
 
 4.  Users Of Platform (Access Rate & Restrictions)
     - EMIU

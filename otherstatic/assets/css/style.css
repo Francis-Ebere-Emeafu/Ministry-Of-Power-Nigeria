@@ -18,6 +18,13 @@ body {
   color: #444444;
 }
 
+.bg-body {
+  background-image: url('../img/bg-electric-6.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;  
+  background-size: cover;
+}
+
 a {
   color: #4154f1;
   text-decoration: none;
@@ -212,6 +219,7 @@ h1, h2, h3, h4, h5, h6 {
   margin-bottom: 30px;
   border: none;
   border-radius: 5px;
+  background:rgba(0,0,0,0.7);
   box-shadow: 0px 0 30px rgba(1, 41, 112, 0.1);
 }
 
@@ -342,6 +350,12 @@ h1, h2, h3, h4, h5, h6 {
   max-height: 26px;
   margin-right: 6px;
 }
+
+.logo1 img {
+  max-height: 76px;
+  margin-right: 6px;
+}
+
 .logo span {
   font-size: 26px;
   font-weight: 700;

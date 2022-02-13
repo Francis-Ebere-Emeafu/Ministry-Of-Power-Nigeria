@@ -6,12 +6,12 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Electricity Management Information System</title>
+  <title>{% block head_title %}{% endblock head_title %} Electricity Management Information System</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href="{% static 'assets/img/favicon.png' %}" rel="icon">
+  <link href="{% static 'assets/img/emis_logo_5.png' %}" rel="icon">
   <link href="{% static 'assets/img/apple-touch-icon.png' %}" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
@@ -44,9 +44,9 @@
   <header id="header" class="header fixed-top d-flex align-items-center">
 
     <div class="d-flex align-items-center justify-content-between">
-      <a href="index.html" class="logo d-flex align-items-center">
-        <img src="{% static 'assets/img/logo.png' %}" alt="">
-        <span class="d-none d-lg-block">emis</span>
+      <a href="{% url 'profile' %}" class="logo2 d-flex align-items-center">
+        <img src="{% static 'assets/img/emis_logo_9.svg' %}" alt="">
+        <!-- <span class="d-none d-lg-block">emis</span> -->
       </a>
       <i class="bi bi-list toggle-sidebar-btn"></i>
     </div><!-- End Logo -->
@@ -66,7 +66,7 @@
             <i class="bi bi-search"></i>
           </a>
         </li><!-- End Search Icon-->
-
+        {% comment %}
         <li class="nav-item dropdown">
 
           <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
@@ -138,7 +138,8 @@
               <a href="#">Show all notifications</a>
             </li>
 
-          </ul><!-- End Notification Dropdown Items -->
+          </ul>
+          <!-- End Notification Dropdown Items -->
 
         </li><!-- End Notification Nav -->
 
@@ -207,12 +208,12 @@
           </ul><!-- End Messages Dropdown Items -->
 
         </li><!-- End Messages Nav -->
-
+        {% endcomment %}
         <li class="nav-item dropdown pe-3">
 
           <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-            <img src="assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
-            <span class="d-none d-md-block dropdown-toggle ps-2">K. Anderson</span>
+            <img src="{% static 'assets/img/profile-img.jpg' %}" alt="Profile" class="rounded-circle">
+            <span class="d-none d-md-block dropdown-toggle ps-2">{{ account.full_name }}</span>
           </a><!-- End Profile Iamge Icon -->
 
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
@@ -255,7 +256,7 @@
             </li>
 
             <li>
-              <a class="dropdown-item d-flex align-items-center" href="#">
+              <a class="dropdown-item d-flex align-items-center" href="{% url 'logout' %}">
                 <i class="bi bi-box-arrow-right"></i>
                 <span>Sign Out</span>
               </a>
@@ -275,12 +276,13 @@
     <ul class="sidebar-nav" id="sidebar-nav">
 
       <li class="nav-item">
-        <a class="nav-link " href="index.html">
+        <a class="nav-link " href="{% url 'profile' %}">
           <i class="bi bi-grid"></i>
-          <span>Dashboard---</span>
+          <span>Dashboard</span>
         </a>
       </li><!-- End Dashboard Nav -->
 
+      {% comment %}
       <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
           <i class="bi bi-menu-button-wide"></i><span>Components</span><i class="bi bi-chevron-down ms-auto"></i>
@@ -501,13 +503,14 @@
           <span>Blank</span>
         </a>
       </li><!-- End Blank Page Nav -->
+      {% endcomment %}
 
     </ul>
 
   </aside><!-- End Sidebar-->
-{% block main %}
-  <main id="main" class="main">
 
+  <main id="main" class="main">
+    {% block main %}
     <div class="pagetitle">
       <h1>Dashboard</h1>
       <nav>
@@ -1151,9 +1154,9 @@
 
       </div>
     </section>
-
+    {% endblock main %}
   </main><!-- End #main -->
-{% endblock main %}
+
     <!-- ======= Footer ======= -->
     <footer id="footer" class="footer">
       <div class="copyright">

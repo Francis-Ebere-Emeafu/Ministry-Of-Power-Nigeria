@@ -36,8 +36,8 @@ class RegForm(forms.ModelForm):
 
 
 class LoginForm(forms.Form):
-    username = forms.CharField(max_length=50)
-    password = forms.CharField(max_length=50, widget=forms.PasswordInput)
+    username = forms.CharField(max_length=50, widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder':'Username'}))
+    password = forms.CharField(max_length=50, widget=forms.PasswordInput(attrs={'class':'form-control', 'placeholder':'Password'}))
 
     def clean(self):
         if 'username' in self.cleaned_data and 'password' in self.cleaned_data:

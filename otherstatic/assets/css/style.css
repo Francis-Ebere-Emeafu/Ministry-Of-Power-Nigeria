@@ -351,8 +351,15 @@ h1, h2, h3, h4, h5, h6 {
   margin-right: 6px;
 }
 
+
+
 .logo1 img {
   max-height: 76px;
+  margin-right: 6px;
+}
+
+.logo2 img {
+  max-height: 46px;
   margin-right: 6px;
 }
 

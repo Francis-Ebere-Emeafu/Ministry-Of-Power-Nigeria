@@ -19,3 +19,10 @@ class Account(models.Model):
 
     def __str__(self):
         return "{} {}, {}, {}".format(self.surname, self.first_name, self.phone, self.email)
+
+    @property
+    def full_name(self):
+        if self.middle_name:
+            return "{} {}. {}.".format(self.surname, self.first_name[0], self.middle_name[0])
+        else:
+            return "{} {}.".format(self.surname, self.first_name[0])

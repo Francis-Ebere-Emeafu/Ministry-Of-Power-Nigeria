@@ -3,9 +3,9 @@
 Project Architecture and Components of the EMIU Platform
 
 1.  Projects
-    - Name
+    - Title
     - Date of Award
-    - Date of Completion
+    - Proposed Date of Completion
     - Contract Sum
     - Location of Project (State, LGA, Zone)
     - Contractor
@@ -38,3 +38,10 @@ Project Architecture and Components of the EMIU Platform
     - EMIU
     - Management
     - Department Reps/Heads
+
+5.  Location
+    - State
+
+    - LGA
+
+    - Zone

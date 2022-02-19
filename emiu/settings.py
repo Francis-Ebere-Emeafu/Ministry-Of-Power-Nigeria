@@ -10,7 +10,10 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 import os
+
+from decouple import config, Csv
 from pathlib import Path
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -20,12 +23,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-(aoqjx-oybxrd@envv4m^2w6jcu5ipijy!nzk71_a8)(#-^ai6'
+SECRET_KEY = config('MY_SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = config('MY_DEBUG', default=False, cast=bool)
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'emiu.emeafu.com', 'www.emiu.emeafu.com', '162.243.173.228']
+ALLOWED_HOSTS = ['emiu.emeafu.com', 'www.emiu.emeafu.com', '162.243.173.228']
+if DEBUG:
+    ALLOWED_HOSTS += config('MY_ALLOWED_HOSTS', cast=Csv())
 
 
 # Application definition
@@ -41,6 +46,8 @@ INSTALLED_APPS = [
     'accounts.apps.AccountsConfig',
     'company.apps.CompanyConfig',
     'department.apps.DepartmentConfig',
+    'location.apps.LocationConfig',
+    'project.apps.ProjectConfig',
 ]
 
 MIDDLEWARE = [
@@ -80,10 +87,10 @@ WSGI_APPLICATION = 'emiu.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'emiu_db',
-        'USER': 'emiu_db',
-        'PASSWORD': 'pass.p1985',
-        'HOST': 'localhost',
+        'NAME': config('MY_DB_NAME'),
+        'USER': config('MY_DB_USER'),
+        'PASSWORD': config('MY_DB_PASSWORD'),
+        'HOST': config('MY_DB_HOST'),
         'PORT': '',
     }
 }

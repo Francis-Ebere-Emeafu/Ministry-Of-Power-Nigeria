@@ -8,4 +8,5 @@ class Department(models.Model):
     room_number = models.CharField(max_length=5, blank=True, null=True)
 
     def __str__(self):
-        return "({}) - {} - {}".format(self.alias, self.room_number, self.dept_name)
+        return "{} - {}".format(self.alias, self.dept_name)
+

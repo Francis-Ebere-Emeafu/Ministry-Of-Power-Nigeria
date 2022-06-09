@@ -1,0 +1,245 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block head_title %}Add New Project |{% endblock head_title %}
+
+
+{% block main %}
+<div class="pagetitle">
+    <h1>Add New Project</h1>
+    <nav>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{% url 'profile' %}">Home</a></li>
+        <li class="breadcrumb-item">Project</li>
+        <li class="breadcrumb-item active">Add</li>
+      </ol>
+    </nav>
+  </div><!-- End Page Title -->
+
+  <section class="section">
+    <div class="row">
+      <div class="col-lg-12">
+
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Enter Project Details</h5>
+ 
+            <!-- Multi Columns Form -->
+            <form class="row g-3" method="post"  id="projectForm" data-lga-url="{% url 'ajax_load_lgas' %}" novalidate onsubmit="return submitForm(this);">{% csrf_token %}
+              
+              <div class="row"> <!-- ROW FOR PROJECT FIELDS -->
+                <div class="row g-3 col-lg-6">
+                  <div class="col-md-12">
+                    <div class="form-floating">
+                      {% if form.title.errors %}
+                          <div class="alert alert-danger">
+                              {{ form.title.errors }}
+                          </div>
+                      {% endif %}
+                      {{ form.title }}
+                      <label for="title">Project Title</label>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-floating">
+                      {% if form.award_date.errors %}
+                          <div class="alert alert-danger">
+                              {{ form.award_date.errors }}
+                          </div>
+                      {% endif %}
+                      {{ form.award_date }}
+                      <label for="award_date">Award Date</label>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-floating">
+                      {% if form.proposed_completion_date.errors %}
+                          <div class="alert alert-danger">
+                              {{ form.proposed_completion_date.errors }}
+                          </div>
+                      {% endif %}
+                      {{ form.proposed_completion_date }}
+                      <label for="floatingPassword">Completion Date</label>
+                    </div>
+                  </div>
+
+                  <div class="col-md-12">
+                    <div class="form-floating">
+                      {% if form.contractor.errors %}
+                          <div class="alert alert-danger">
+                              {{ form.contractor.errors }}
+                          </div>
+                      {% endif %}
+                      {{ form.contractor }}
+                      <label for="title">Select Contractor</label>
+                    </div>
+                  </div>
+
+                  <div class="col-md-12">
+                    <div class="form-floating">
+                      {% if form.state.errors %}
+                          <div class="alert alert-danger">
+                              {{ form.state.errors }}
+                          </div>
+                      {% endif %}
+                      {{ form.state }}
+                      <label for="state">State</label>
+                    </div>
+                  </div>    
+
+
+                
+
+                </div>
+                <div class="row g-3 col-lg-6">
+                  <div class="col-md-12">
+                    <div class="form-floating">
+                      {% if form.department.errors %}
+                          <div class="alert alert-danger">
+                              {{ form.department.errors }}
+                          </div>
+                      {% endif %}
+                      {{ form.department }}
+                      <label for="title">Supervising Department</label>
+                    </div>
+                  </div>
+
+                  <div class="col-md-6">
+                    <div class="form-floating">
+                      {% if form.contract_sum_ngn.errors %}
+                          <div class="alert alert-danger">
+                              {{ form.title.contract_sum_ngn }}
+                          </div>
+                      {% endif %}
+                      {{ form.contract_sum_ngn }}
+                      <label for="contract_sum_ngn">Contract Sum - NGN</label>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-floating">
+                      {% if form.contract_sum_usd.errors %}
+                          <div class="alert alert-danger">
+                              {{ form.contract_sum_usd.errors }}
+                          </div>
+                      {% endif %}
+                      {{ form.contract_sum_usd }}
+                      <label for="contract_sum_usd">Contract Sum - USD</label>
+                    </div>
+                  </div>
+
+                  <div class="col-md-12">
+                    <div class="form-floating">
+                      {% if form.consultant.errors %}
+                          <div class="alert alert-danger">
+                              {{ form.consultant.errors }}
+                          </div>
+                      {% endif %}
+                      {{ form.consultant }}
+                      <label for="title">Consultant </label>
+                    </div>
+                  </div>
+
+                  <div class="col-md-12">
+                    <div class="form-floating">
+                      {% comment %}
+                      {% if form.lga.errors %}
+                          <div class="alert alert-danger">
+                              {{ form.lga.errors }}
+                          </div>
+                      {% endif %}
+                      {{ form.lga }}
+                      {% endcomment %}
+                      <select name="lga" class="form-control" required="False" id="id_lga">
+                        <option value="">---------</option>
+                      </select>
+                      <label for="lga">Select LGA</label>
+                    </div>
+                  </div>                  
+                
+
+
+                  
+
+                </div>
+              </div>
+              <div class="row g-3 col-lg-10">
+                <div class="col-md-12">
+                  <div class="form-floating">
+                    {% if form.description.errors %}
+                        <div class="alert alert-danger">
+                            {{ form.description.errors }}
+                        </div>
+                    {% endif %}
+                    {{ form.description }}
+                    <label for="title">Summary - Optional</label>
+                  </div>
+                </div>
+              </div>
+              <div class="text-center">
+                <button type="submit" class="btn btn-primary">Submit</button>
+                <!-- <button type="reset" class="btn btn-secondary">Reset</button> -->
+              </div>
+            </form><!-- End Multi Columns Form -->
+
+          </div>
+        </div>
+
+      </div>
+            </div>
+    </section>
+
+{% endblock main %}
+
+{% block extra-js %}
+<script type="text/javascript">
+console.log("Hello Francis")
+$("#id_state").change(function () {
+  console.log("Change Function")
+  var url = $("#projectForm").attr("data-lga-url");  // get the url of the `load_cities` view
+  var stateId = $(this).val();  // get the selected country ID from the HTML input
+  console.log(stateId)
+  console.log(url)
+
+
+  $.ajax({                       // initialize an AJAX request
+    url: url,                    // set the url of the request (= localhost:8000/hr/ajax/load-cities/)
+    data: {
+      'state': stateId       // add the country id to the GET parameters
+    },
+    success: function (data) {   // `data` is the return of the `load_cities` view function
+      console.log(data)
+      $("#id_lga").html(data);  // replace the contents of the city input with the data that came from the server
+    }
+  });
+
+});
+
+
+function submitForm(form){
+  swal({
+  title: "Are you adding new project?",
+  text: "Once submitted, you will not be able to edit the project details!",
+  icon: "warning",
+  buttons: true,
+  dangerMode: true,
+}).then((isOkey) => {
+  if (isOkey) {
+    form.submit();
+  } 
+});
+return false;
+}
+
+
+
+var cleave = new Cleave('#id_contract_sum_ngn', {
+    numeral: true,
+    numeralThousandsGroupStyle: 'thousand'
+});
+new Cleave('#id_contract_sum_usd', {
+    numeral: true,
+    numeralThousandsGroupStyle: 'thousand'
+});
+
+
+</script>
+{% endblock extra-js %}

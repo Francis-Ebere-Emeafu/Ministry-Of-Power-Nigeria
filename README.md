@@ -45,3 +45,6 @@ Project Architecture and Components of the EMIU Platform
     - LGA
 
     - Zone
+
+
+https://python.plainenglish.io/

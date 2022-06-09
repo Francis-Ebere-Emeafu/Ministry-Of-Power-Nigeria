@@ -1,0 +1,5 @@
+
+{% for state in states %}
+<li>{{ state }}</li>
+<li>{{state.lga_set.all.count}}</li>
+{% endfor %}

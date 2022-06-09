@@ -18,10 +18,16 @@ class State(models.Model):
     def __str__(self):
         return self.name
 
+    class Meta:
+        ordering = ['name']
+
 
 class LGA(models.Model):
     state = models.ForeignKey(State, on_delete=models.CASCADE)
     name = models.CharField(max_length=100)
 
     def __str__(self):
-        return "{} - {}".format(self.state, self.name)
+        return "{}".format(self.name)
+
+    class Meta:
+        ordering = ['name']

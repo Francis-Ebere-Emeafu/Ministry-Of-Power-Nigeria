@@ -24,7 +24,31 @@ body {
   background-attachment: fixed;  
   background-size: cover;
 }
+.bg-departments {
+  background-image: url('../img/bg-electric-14.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;  
+  background-size: cover;
+}
 
+.bg-department-grey{
+  background: rgba(236, 3, 3, 0.2);
+}
+
+.department-title-bg{
+    margin: auto;
+    padding-top: 40px;
+    text-align: center;
+    margin-bottom: 30px;
+    color: white;
+}
+.department-title-bg h5{
+  font-family: "Nunito", sans-serif;
+  color: white;
+  font-size: 30px;
+  line-height: 27px;
+  font-weight: 700;
+}
 a {
   color: #4154f1;
   text-decoration: none;
@@ -234,8 +258,10 @@ h1, h2, h3, h4, h5, h6 {
   padding: 20px 0 15px 0;
   font-size: 18px;
   font-weight: 500;
-  color: #012970;
+  color: #017022;
   font-family: "Poppins", sans-serif;
+  text-transform: uppercase;
+  text-align: center;
 }
 .card-title span {
   color: #899bbd;
@@ -244,6 +270,13 @@ h1, h2, h3, h4, h5, h6 {
 }
 .card-body {
   padding: 0 20px 20px 20px;
+}
+
+.card-body2 {
+  padding-left: 0px;
+  padding-right: 0px;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 .card-img-overlay {
@@ -293,6 +326,41 @@ h1, h2, h3, h4, h5, h6 {
   padding: 0 0 15px 0;
   color: #3e4f6f;
   font-size: 15px;
+}
+
+
+.carousel-caption2 {
+  /* position: absolute; */
+  font-family: 'Josefin Sans';
+  /* font-size: 22px; */
+  font-size: 18px;
+  color: var(--font-color);
+  font-weight: 400; 
+  right: 15%;
+  bottom: 20px;
+  left: 15%;
+  z-index: 10;
+  padding-bottom: 20px;
+  padding-right: 25px;
+  /* color: #fff; */
+  text-align: justify; 
+}
+
+.carousel-caption2 p {
+  margin-top: 6px;
+  font-family: 'Josefin Sans';
+}
+.carousel-caption2 p ul li{
+  margin-top: 4px;
+  font-family: 'Josefin Sans';
+  /* font-family: "sans-serif", monospace ; */
+
+  /* padding-left: 15px; */
+}
+.carousel-caption2 h5 {
+  color: var(--heading-color);
+  font-size: 1.6em;
+  font-weight: 600;
 }
 
 /* Breadcrumbs */
@@ -347,7 +415,7 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 .logo img {
-  max-height: 26px;
+  max-height: 46px;
   margin-right: 6px;
 }
 
@@ -366,7 +434,7 @@ h1, h2, h3, h4, h5, h6 {
 .logo span {
   font-size: 26px;
   font-weight: 700;
-  color: #012970;
+  color: hsl(133, 94%, 20%);
   font-family: "Nunito", sans-serif;
 }
 
@@ -377,6 +445,7 @@ h1, h2, h3, h4, h5, h6 {
   box-shadow: 0px 2px 20px rgba(1, 41, 112, 0.1);
   background-color: #fff;
   padding-left: 20px;
+  border-bottom: 4px solid rgb(4, 158, 81);
   /* Toggle Sidebar Button */
   /* Search Bar */
 }
@@ -441,11 +510,13 @@ h1, h2, h3, h4, h5, h6 {
 /*--------------------------------------------------------------
 # Header Nav
 --------------------------------------------------------------*/
+ 
 .header-nav ul {
   list-style: none;
 }
 .header-nav > ul {
   margin: 0;
+  margin-right: 30px;
   padding: 0;
 }
 .header-nav .nav-icon {
@@ -852,6 +923,54 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /*--------------------------------------------------------------
+# Services
+--------------------------------------------------------------*/
+ .icon-box {
+  padding: 60px 30px;
+  transition: all ease-in-out 0.3s;
+  background: #fefefe;
+  box-shadow: 0px 5px 90px 0px rgba(110, 123, 131, 0.1);
+  border-radius: 18px;
+  border-bottom: 5px solid #fff;
+}
+ .icon-box .icon {
+  width: 64px;
+  height: 64px;
+  background: #009961;
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  transition: ease-in-out 0.3s;
+  color: #fff;
+}
+ .icon-box .icon i {
+  font-size: 28px;
+}
+ .icon-box h4 {
+  font-weight: 700;
+  margin-bottom: 15px;
+  font-size: 24px;
+}
+ .icon-box h4 a {
+  color: #282828;
+  transition: ease-in-out 0.3s;
+}
+ .icon-box p {
+  line-height: 24px;
+  font-size: 14px;
+  margin-bottom: 0;
+}
+ .icon-box:hover {
+  transform: translateY(-10px);
+  border-color: #009961;
+}
+ .icon-box:hover h4 a {
+  color: #009961;
+}
+
+/*--------------------------------------------------------------
 # Icons list page
 --------------------------------------------------------------*/
 .iconslist {
@@ -870,7 +989,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 .iconslist i {
   margin: 0.25rem;
-  font-size: 2.5rem;
+  font-size: 6.5rem;
 }
 .iconslist .label {
   font-family: var(--bs-font-monospace);
@@ -1085,14 +1204,15 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 14px;
   transition: all 0.3s;
   border-top: 1px solid #cddfff;
+  background: #009961;
 }
 .footer .copyright {
   text-align: center;
-  color: #012970;
+  color: #fff;
 }
 .footer .credits {
   padding-top: 5px;
   text-align: center;
   font-size: 13px;
-  color: #012970;
+  color: #fff;
 }

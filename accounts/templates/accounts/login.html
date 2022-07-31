@@ -3,97 +3,290 @@
 
 {% block content %}
 
-<main class="bg-body">
-    <div class="container">
+  <!-- ======= Header ======= -->
+  <header id="header" class="header fixed-top d-flex align-items-center">
 
-      <section class="section register min-vh-100 d-flex flex-column align-items-center justify-content-center py-4">
-        <div class="container">
-          <div class=" justify-content-center">
-            <div class="col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center">
+    <div class="d-flex align-items-center justify-content-between">
+      <a href="" class="logo d-flex align-items-center">
+        <img src="{% static 'assets/img/coat_of_arm.png' %}" alt="">
+        <span class="d-none d-lg-block">EMIS</span>
+      </a>
+    </div><!-- End Logo -->
 
-              <div class="d-flex justify-content-center py-4">
-                <a href="{% url 'home' %}" class="logo1 d-flex align-items-center w-auto">
-                  <!-- <img src="{% static 'assets/img/emis_logo_4.png' %}" alt=""> -->
-                  <!-- <img src="{% static 'assets/img/emis_logo_7.png' %}" alt=""> -->
-                  <img src="{% static 'assets/img/emiu_logo.svg' %}" alt="">
-                  <!-- <span class="d-none d-lg-block" style="color: aliceblue;">EMIS</span> -->
-                  <!-- Electricity Management Information System -->
-                </a>
-              </div><!-- End Logo -->
 
-              <div class="card mb-3">
+    <nav class="header-nav ms-auto">
+      <ul class="d-flex align-items-center">
+        <!-- <li>
+            <a class="dropdown-item d-flex align-items-center" href="#">
+            <i class="bi bi-box-arrow-right"></i>
+            <span>Sign Out</span>
+            </a>
+        </li> -->
+       
+        <li>
+            <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#verticalycentered">
+                <i class="bi bi-box-arrow-in-right"></i>
+                Login
+            </button>
+                          
+            
+        </li>
 
-                <div class="card-body">
 
-                  <div class="pt-4 pb-2">
-                    <h5 class="card-title text-center pb-0 fs-4"  style="color: aliceblue;">Login</h5>
-                    <p class="text-center small" style="color: aliceblue;">Enter username & password to login</p>
-                  </div>
+      </ul>
+    </nav><!-- End Icons Navigation -->
 
-                  <form class="row g-3" method="post">{% csrf_token %}
+  </header><!-- End Header -->
 
-                    <div class="col-12">
-                      <label for="yourUsername" class="form-label"  style="color: aliceblue;">Username</label>
-                      {% if form.username.errors %}
-                      <div class="alert alert-danger">
-                          {{ form.username.errors }}
-                      </div>
-                      {% endif %}
-                      <!-- <div class="input-group has-validation"> -->
-                        <!-- <span class="input-group-text" id="inputGroupPrepend">@</span> -->
-                        <!-- <input type="text" name="username" class="form-control" id="yourUsername" required> -->
-                      <!-- </div> -->
-                        {{ form.username }}
-                        <div class="invalid-feedback"  style="color: aliceblue;">Please enter your username.</div>
-                      
-                    </div>
+ 
+  <main class="main" >
+     
+    <!-- Vertically centered Modal -->
+    <div class="modal fade" id="verticalycentered" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
 
-                    <div class="col-12">
-                      {% if form.password.errors %}
-                      <div class="alert alert-danger">
-                          {{ form.password.errors }}
-                      </div>
-                      {% endif %}
-                      <label for="yourPassword" class="form-label"  style="color: aliceblue;">Password</label>
-                      {{ form.password }}
-                      <!-- <input type="password" name="password" class="form-control" id="yourPassword" required> -->
-                      <div class="invalid-feedback">Please enter your password!</div>
-                    </div>
+            <div class="modal-body" style="color: rgb(4, 158, 81)">
+                <div class="modal-header">
+                    <h5 class="modal-title">Enter Login Credentials</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                   
-                    <div class="col-12">
-                      <div class="form-check">
-                        <input class="form-check-input" type="checkbox" name="remember" value="true" id="rememberMe">
-                        <label class="form-check-label" for="rememberMe"  style="color: aliceblue;">Remember me</label>
-                      </div>
-                    </div>
-                  
-                    <div class="col-12">
-                      <button class="btn btn-primary w-100" type="submit">Login</button>
-                    </div>
-                    <!-- 
-                    <div class="col-12">
-                      <p class="small mb-0">Don't have account? <a href="pages-register.html">Create an account</a></p>
-                    </div>
-                    -->
-                  </form>
-
                 </div>
-              </div>
+                
+                <div class="card p-4">
+                    <form class="row g-3" method="post">{% csrf_token %}
 
-              <div class="credits" style="color: white;"> 
-                <!-- All the links in the footer should remain intact. -->
-                <!-- You can delete the links only if you purchased the pro version. -->
-                <!-- Licensing information: https://bootstrapmade.com/license/ -->
-                <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ -->
-                <!-- <a href="http://emeafu.com/" style="color: white;">Designed by EMIU</a> -->
-              </div>
+                        <div class="col-12">
+                          <label for="yourUsername" class="form-label">Username</label>
+                          {% if form.username.errors %}
+                          <div class="alert alert-danger">
+                              {{ form.username.errors }}
+                          </div>
+                          {% endif %}
+                            {{ form.username }}
+                            <div class="invalid-feedback">Please enter your username.</div>
+                          
+                        </div>
+    
+                        <div class="col-12">
+                          {% if form.password.errors %}
+                          <div class="alert alert-danger">
+                              {{ form.password.errors }}
+                          </div>
+                          {% endif %}
+                          <label for="yourPassword" class="form-label"  style="color: rgb(4, 158, 81);">Password</label>
+                          {{ form.password }}
+                          <!-- <input type="password" name="password" class="form-control" id="yourPassword" required> -->
+                          <div class="invalid-feedback">Please enter your password!</div>
+                        </div>
+                      
+                        <div class="col-12">
+                          <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="remember" value="true" id="rememberMe">
+                            <label class="form-check-label" for="rememberMe"  style="color: rgb(4, 158, 81);">Remember me</label>
+                          </div>
+                        </div>
 
+                        <div class="">
+                            <button type="submit" class="btn btn-success">Login</button>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        </div>
+                       
+                    </form>
+                </div>
             </div>
+            
           </div>
         </div>
+    </div><!-- End Vertically centered Modal-->  
+      
+    <section class="section  bg-body w3l-main-slider" style="min-height: 700px;">
+          <div class="item">
+            <li>
+                <div class="slider-info banner-view bg bg2">
+                    <div class="banner-info">
+                        <div class="container">
+                            <div class="banner-info-bg">
+                                <h5>Electricity <br> Management Information System  <span></span> </h5>
+                                <p class="mt-md-4 mt-3">secured . updated . informed</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </div>
+    </section>
 
-      </section>
+    <section class="section">
+      <div class="container" styles="margin-top:;">
+        <div class="">
+          <div class="row">
+           
+              <div class="col-lg-4">
+              <div class="card-body">
+                <h5 class="card-title">Management Team</h5>
 
-    </div>
+                <!-- Slides with indicators -->
+                <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+                  <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                  </div>
+                  <div class="carousel-inner">
+                    <div class="carousel-item active">
+                      <img src="{% static 'assets/img/team-lead-1.jpg' %}" class="d-block w-100" alt="...">
+                    </div>
+                    <div class="carousel-item">
+                      <img src="{% static 'assets/img/team-lead-2.jpg' %}" class="d-block w-100" alt="...">
+                    </div>
+                    <div class="carousel-item">
+                      <img src="{% static 'assets/img/team-lead-3.jpg' %}" class="d-block w-100" alt="...">
+                    </div>
+                  </div>
+
+                  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                  </button>
+                  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                  </button>
+
+                </div><!-- End Slides with indicators -->
+
+              </div>
+              </div>
+            
+              <div class="col-lg-8">
+                <div class="card-body">
+                  <h5 class="card-title"> &nbsp;  &nbsp; </h5>
+                  <!-- About EMIS -->
+                      <div class="">
+                        <div class="carousel-caption2">
+                          <h5>Electricity Management Information Unit (EMIU)</h5>
+                          <p>The EMIU is a Unit established by the Management Team of the Federal Ministry of Power 
+                            to collate and store data on all the projects being implemented by the Ministry, so as to 
+                            aid them easily access vital information for making sound decisions on all matters related to the sector.
+                          </p>
+                          <p>
+                            The Unit was inaugurated by the Permanent Secretary (Engr Nebeolisa Anako) on 17th November 2021 
+                            and comprises officers from the five (5) technical Departments who are to report directly
+                             to the office of the Permanent Secretary of the Ministry.
+                          </p>
+                          <p style="font-weight: bold;">The core mandate of the Unit is to:
+                            <ul>
+                              <li> &nbsp;&nbsp;<i class="bi bi-star me-1 text-success"></i>&nbsp;&nbsp;Collate data</li>
+                              <li> &nbsp;&nbsp;<i class="bi bi-star me-1 text-success"></i>&nbsp;&nbsp;Process data</li>
+                              <li> &nbsp;&nbsp;<i class="bi bi-star me-1 text-success"></i>&nbsp;&nbsp;Manage data/information that are relevant to the Electricity Sector of the country.</li>
+                            </ul>
+                          </p>
+                          <p>The <b>EMIS</b> is one of the innovative ideas of the members of the Unit, 
+                            geared towards aiding the Management Team achieve their goals for the Ministry and the Sector.</p>
+                          
+                        </div>
+                      </div>
+                </div>
+              </div>
+            </div>
+        </div>
+      </div>
+    </section> 
+
+    <section class="section bg-departments  " >
+        <!-- style="margin-top: 80px; min-height: 600px;" -->
+        <div class="bg-department-grey">
+          <div class="container">
+            <div class="department-title-bg">
+              <h5>The Ministry's Technical Departments</h5>
+            </div>
+            <div class="row" style="padding-top:30px;">
+              <div class="col-lg-4">
+                <div class="card-body2">
+                  <div class="carousel-caption2 icon-box"> 
+                      <div class="icon"><i class="bi bi-building"></i></div> 
+                    <h5 style="text-align: left;">Energy Resources Department</h5>
+                    <p>Responsible for Power Generation <a href="https://www.power.gov.ng/department/energy-resources-development/">Read More...</a></p>
+                  </div>
+                </div>
+              </div>          
+              
+              <div class="col-lg-4">
+                <div class="card-body2">
+                  <div class="carousel-caption2 icon-box"> 
+                    <div class="icon"><i class="bi bi-box-arrow-in-up-right"></i></div> 
+                    <h5 style="text-align: left;">Transmission Services Department</h5>
+                    <p>Responsible for Power Generation <a href="https://www.power.gov.ng/department/transmission-system/">Read More...</a></p>
+                  </div>  
+                </div>      
+              </div>
+
+              <div class="col-lg-4">
+                <div class="card-body2">
+                  <div class="carousel-caption2 icon-box"> 
+                    <div class="icon"><i class="bi bi-diagram-3-fill"></i></div> 
+                    <h5 style="text-align: left;">Distribution Services Department</h5>
+                    <p>Responsible for Power Generation <a href="https://www.power.gov.ng/department/distribution-system/">Read More...</a></p>
+                  </div>  
+                </div>  
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-lg-4">
+                <div class="card-body2">
+                  <div class="carousel-caption2 icon-box"> 
+                      <div class="icon"><i class="bi bi-battery-charging"></i></div> 
+                    <h5 style="text-align: left;">Renewable and Rural Power Access Department</h5>
+                    <p>Responsible for Providing Renewable Energy Solutions and Rural Access to Power.<a href="https://www.power.gov.ng/department/renewable-and-rural-power-access-2/">Read More...</a></p>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="col-lg-4">
+                <div class="card-body2">
+                  <div class="carousel-caption2 icon-box"> 
+                    <div class="icon"><i class="bi bi-cash-coin"></i></div> 
+                    <h5 style="text-align: left;">Investment and Sector Development Department</h5>
+                    <p>Responsible for Develpoing the Investment Sector of the Ministry. <a href="https://www.power.gov.ng/department/investment-and-sector-development/">Read More...</a></p>
+                  </div>  
+                </div>  
+              </div>
+              
+              <!-- <div class="col-lg-4">
+                <div class="card-body2">
+                  <div class="carousel-caption2 icon-box"> 
+                    <div class="icon"><i class="bi bi-building"></i></div> 
+                    <h5 style="text-align: left;">Transmission Services Department</h5>
+                    <p>Responsible for Power Generation <a href="https://www.power.gov.ng/department/energy-resources-development/">Read More...</a></p>
+                  </div>  
+                </div>      
+              </div> -->
+            </div>
+            
+          </div>
+        </div>
+    </section>
+    
+    <section class="projects"></section>
+
+
   </main><!-- End #main -->
-  {% endblock content %}
+
+  <!-- ======= Footer ======= -->
+   <!-- ======= Footer ======= -->
+   <footer class="footer" id="footers">
+    <div class="copyright">
+      &copy; Copyright <strong><span>EMIS</span></strong>. All Rights Reserved
+    </div>
+    <!-- <div class="credits"> -->
+      <!-- All the links in the footer should remain intact. -->
+      <!-- You can delete the links only if you purchased the pro version. -->
+      <!-- Licensing information: https://bootstrapmade.com/license/ -->
+      <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ -->
+      <!-- Designed by <a href="https://coding4africa.com/">CodingForAfrica</a> -->
+    <!-- </div> -->
+  </footer><!-- End Footer -->
+
+{% endblock content %}

@@ -55,6 +55,7 @@ def logout_user(request):
     return redirect('home')
 
 
+@login_required(login_url='login')
 def profile(request):
 
     context = {

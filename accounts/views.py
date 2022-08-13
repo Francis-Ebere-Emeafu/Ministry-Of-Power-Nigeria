@@ -9,9 +9,11 @@ from accounts.models import Account
 from accounts.forms import RegForm, LoginForm
 
 
+@login_required(login_url='home')
 def register(request):
     if request.method == 'POST':
         form = RegForm(request.POST)
+
         if form.is_valid():
             password = form.cleaned_data['password']
             username = form.cleaned_data['email']
@@ -31,16 +33,30 @@ def register(request):
     return render(request, "accounts/register.html", {"form": form})
 
 
+def is_ajax(request):
+    return request.META.get('HTTP_X_REQUESTED_WITH') == 'XMLHttpRequest'
+
+
 def login_user(request):
+    print('Ajax is in the form')
     if request.method == 'POST':
+        #  and is_ajax(request):
         form = LoginForm(request.POST)
+        
+        # if request.is_ajax():
+        print('Ajax response, received')
+            
         if form.is_valid():
             username = form.cleaned_data['username']
             password = form.cleaned_data['password']
+            print(username, ' & ', password)
 
             user = authenticate(username=username, password=password)
+            print(user)
             if user is not None:
+                print('We are here!')
                 login(request, user)
+                messages.success(request, "Login Successful")
                 return redirect('profile')
             else:
                 messages.warning(request, "Invalid username or password")
@@ -55,7 +71,7 @@ def logout_user(request):
     return redirect('home')
 
 
-@login_required(login_url='login')
+@login_required(login_url='home')
 def profile(request):
 
     context = {

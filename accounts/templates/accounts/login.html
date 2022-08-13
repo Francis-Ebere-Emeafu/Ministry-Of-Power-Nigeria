@@ -54,7 +54,8 @@
                 </div>
                 
                 <div class="card p-4">
-                    <form class="row g-3" method="post">{% csrf_token %}
+                    <form class="row g-3" method="post" id="login-form" action="{% url 'login' %}">
+                      {% csrf_token %}
 
                         <div class="col-12">
                           <label for="yourUsername" class="form-label">Username</label>
@@ -89,7 +90,7 @@
 
                         <div class="">
                             <button type="submit" class="btn btn-success">Login</button>
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
                         </div>
                        
                     </form>
@@ -123,40 +124,40 @@
           <div class="row">
            
               <div class="col-lg-4">
-              <div class="card-body">
-                <h5 class="card-title">Management Team</h5>
+                <div class="card-body">
+                  <h5 class="card-title">Management Team</h5>
 
-                <!-- Slides with indicators -->
-                <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-                  <div class="carousel-indicators">
-                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-                  </div>
-                  <div class="carousel-inner">
-                    <div class="carousel-item active">
-                      <img src="{% static 'assets/img/team-lead-1.jpg' %}" class="d-block w-100" alt="...">
+                  <!-- Slides with indicators -->
+                  <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-indicators">
+                      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
                     </div>
-                    <div class="carousel-item">
-                      <img src="{% static 'assets/img/team-lead-2.jpg' %}" class="d-block w-100" alt="...">
+                    <div class="carousel-inner">
+                      <div class="carousel-item active">
+                        <img src="{% static 'assets/img/team-lead-1.jpg' %}" class="d-block w-100" alt="...">
+                      </div>
+                      <div class="carousel-item">
+                        <img src="{% static 'assets/img/team-lead-2.jpg' %}" class="d-block w-100" alt="...">
+                      </div>
+                      <div class="carousel-item">
+                        <img src="{% static 'assets/img/team-lead-3.jpg' %}" class="d-block w-100" alt="...">
+                      </div>
                     </div>
-                    <div class="carousel-item">
-                      <img src="{% static 'assets/img/team-lead-3.jpg' %}" class="d-block w-100" alt="...">
-                    </div>
-                  </div>
 
-                  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</span>
-                  </button>
-                  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
-                  </button>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                      <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                      <span class="visually-hidden">Next</span>
+                    </button>
 
-                </div><!-- End Slides with indicators -->
+                  </div><!-- End Slides with indicators -->
 
-              </div>
+                </div>
               </div>
             
               <div class="col-lg-8">
@@ -290,3 +291,11 @@
   </footer><!-- End Footer -->
 
 {% endblock content %}
+
+{% block extra-js %}
+<script src="assets/js/modal_login.js"></script>
+<!-- {% static '' %} -->
+<script>
+  
+</script>
+{% endblock extra-js %}

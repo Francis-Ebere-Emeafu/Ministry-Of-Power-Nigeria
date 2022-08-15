@@ -1,3 +1,4 @@
+from termios import N_SLIP
 from django.db import models
 from django.utils import timezone
 
@@ -11,8 +12,8 @@ class Project(models.Model):
     title = models.CharField(max_length=500, blank=False, null=False)
     award_date = models.DateField()
     proposed_completion_date = models.DateField()
-    contract_sum_ngn = models.DecimalField(null=True, blank=True, max_digits=25,decimal_places=3)
-    contract_sum_usd = models.DecimalField(null=True, blank=True, max_digits=25,decimal_places=3)
+    contract_sum_ngn = models.DecimalField(null=True, blank=True, max_digits=50, decimal_places=5)
+    contract_sum_usd = models.DecimalField(null=True, blank=True, max_digits=50, decimal_places=5)
     state = models.ForeignKey(State, on_delete=models.CASCADE)
     lga = models.ForeignKey(LGA, on_delete=models.CASCADE, blank=True, null=True)
     contractor = models.ForeignKey(Company, on_delete=models.CASCADE)

@@ -153,11 +153,7 @@
                       </select>
                       <label for="lga">Select LGA</label>
                     </div>
-                  </div>                  
-                
-
-
-                  
+                  </div>                                    
 
                 </div>
               </div>
@@ -190,6 +186,11 @@
 {% endblock main %}
 
 {% block extra-js %}
+<!-- https://forum.djangoproject.com/t/4-way-dependent-chained-dropdown-list-with-django-location-dropdown-list/11526 -->
+<!-- https://python.plainenglish.io/python-and-django-create-a-dependent-chained-dropdown-select-list-b2c796f5a11 -->
+<!-- https://simpleisbetterthancomplex.com/tutorial/2018/01/29/how-to-implement-dependent-or-chained-dropdown-list-with-django.html -->
+
+
 <script type="text/javascript">
 console.log("Hello Francis")
 $("#id_state").change(function () {
@@ -198,7 +199,6 @@ $("#id_state").change(function () {
   var stateId = $(this).val();  // get the selected country ID from the HTML input
   console.log(stateId)
   console.log(url)
-
 
   $.ajax({                       // initialize an AJAX request
     url: url,                    // set the url of the request (= localhost:8000/hr/ajax/load-cities/)
@@ -229,17 +229,15 @@ function submitForm(form){
 return false;
 }
 
-
-
-var cleave = new Cleave('#id_contract_sum_ngn', {
-    numeral: true,
-    numeralThousandsGroupStyle: 'thousand'
-});
-new Cleave('#id_contract_sum_usd', {
-    numeral: true,
-    numeralThousandsGroupStyle: 'thousand'
+var ngn_cleave = Cleave('#contract_sum_ngn', {
+  numeral: true,
+  numeralThousandsGroupStyle: 'thousand'
 });
 
+var usd_cleave = Cleave('#contract_sum_usd', {
+  numeral: true,
+  numeralThousandsGroupStyle: 'thousand'
+});    
 
 </script>
 {% endblock extra-js %}

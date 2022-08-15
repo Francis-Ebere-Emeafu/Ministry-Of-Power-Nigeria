@@ -44,7 +44,7 @@ class LoginForm(forms.Form):
             username = self.cleaned_data['username']
             password = self.cleaned_data['password']
             user = authenticate(username=username, password=password)
-            print('---------DONE---------', user, '---------DONE---------')
+            print('\n---------DONE---------\n', user, '\n---------DONE---------\n')
 
             if user is not None:
                 print('Returning User')

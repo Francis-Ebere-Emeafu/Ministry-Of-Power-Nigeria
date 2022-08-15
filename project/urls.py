@@ -4,8 +4,10 @@ from project import views
 
 
 urlpatterns = [
-    path("add/new", views.new_project, name="new_project"),
+    path("add/new", views.add_new_project, name="new_project"),
+    path("all/projects", views.project_list, name="project_list"),
     path("lgas/", views.load_lgas, name="ajax_load_lgas"),
+    
 
     # path("login/", views.login_user, name="login"),
     # path("logout/", views.logout_user, name="logout"),

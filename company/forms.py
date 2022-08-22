@@ -1,5 +1,5 @@
 
-from tkinter import Widget
+# from tkinter import Widget
 from django import forms
 from django.core.exceptions import ObjectDoesNotExist
 
@@ -15,11 +15,11 @@ class CompanyForm(forms.ModelForm):
         widgets = {
             'company_name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Company Name'}),
             'address': forms.Textarea(attrs={'class': 'form-control', 'row':3, 'placeholder': 'Address of Company'}),
-            'website': forms.URLField(attrs={'class': 'form-control', 'placeholder': 'Website'}),
-            'email': forms.EmailInput(attrs={'class': 'form-control', 'placeholder': 'Email'}),
+            'website': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Website'}),
+            'email': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Email'}),
             'phone': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Phone Number'}),
             'name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Contact Person'}),
-            'logo': forms.ImageField(attrs={'class': 'form-control', 'placeholder': 'Logo'}),
+            'logo': forms.FileInput(attrs={'class': 'form-control', 'placeholder': 'Logo'}),
         }
 
     def clean_company_name(self):

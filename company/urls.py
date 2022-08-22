@@ -1,12 +1,12 @@
 from django.urls import path, re_path
 
-from project import views
+from company import views
 
 
 urlpatterns = [
-    path("add/new", views.add_new_project, name="new_project"),
-    path("all/projects", views.project_list, name="project_list"),
-    path("lgas/", views.load_lgas, name="ajax_load_lgas"),
+    path("add/new", views.register_company, name="register_company"),
+    path("all/companies", views.company_list, name="company_list"),
+    # path("lgas/", views.load_lgas, name="ajax_load_lgas"),
     
 
     # path("login/", views.login_user, name="login"),

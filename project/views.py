@@ -5,8 +5,8 @@ from django.views.generic import ListView, CreateView, UpdateView
 from django.urls import reverse_lazy
 
 
-from project.models import Project
-from project.forms import ProjectForm
+from project.models import Project, Payment
+from project.forms import ProjectForm, PaymentForm
 from location.models import *
 
 
@@ -58,9 +58,10 @@ def load_lgas(request):
 
 
 
-class ProjectListView(ListView):
-    model = Project
-    context_object_name = 'project'
+def add_project_payment(request, project_id=None):
+    
+    context = {}
+    return render(request, 'project/add_project_payment.html', context)
 
 
 class ProjectCreateView(CreateView):

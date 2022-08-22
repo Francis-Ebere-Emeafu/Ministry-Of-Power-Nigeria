@@ -3,7 +3,7 @@ from django import forms
 from django.core.exceptions import ObjectDoesNotExist
 
 
-from project.models import Project
+from project.models import Project, Payment
 from company.models import Company
 from department.models import Department
 from location.models import State, LGA
@@ -129,9 +129,77 @@ class ProjectForm(forms.ModelForm):
        
 
         
-# class ThatForm(ModelForm):
-#   class Meta:
-    # widgets = {"text": Textarea(required=False)}
+class PaymentForm(forms.ModelForm):
+    class Meta:
+        model = Payment
+        fields = ['project', 'payment_type', 'amount_paid_ngn', 'amount_paid_ngn', 'amount_certified_ngn', 'amount_certified_usd']
+
+        def __init__(self, *args, **kwags):
+            super().__init__(*args, **kwags)
+            self.fields['amount_usd'].required = False
+
+        widgets = {
+            'project': forms.Select(attrs={'class': 'form-select', 'placeholder': 'Select project'}),
+            'payment_type': forms.Select(attrs={'class': 'form-select', 'placeholder': 'Select payment type'}),
+            'amount_paid_ngn': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Amount Paid - NGN'}),
+            'amount_paid_usd': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Amount Paid - USD'}),
+            'amount_certified_ngn': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Amount Certified - NGN'}),
+            'amount_certified_usd': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Amount Certified - USD'}),
+            }
+
+    def clean_amount_paid_ngn(self):
+        if 'amount_paid_ngn' in self.cleaned_data:
+            amount_paid_ngn = self.cleaned_data['amount_paid_ngn']
+            print("\n This is the form cleaning data")
+            print(amount_paid_ngn)
+            print(type(amount_paid_ngn))
+            amount_paid_ngn = Decimal(amount_paid_ngn.replace(',', ''))
+            print(amount_paid_ngn)
+            print(type(amount_paid_ngn))
+            return amount_paid_ngn
+        else:
+            raise forms.ValidationError("The amount paid is required!")
+
+    def clean_amount_paid_usd(self):
+        if not 'amount_paid_usd' in self.cleaned_data:
+            amount_paid_usd = 0
+            return amount_paid_usd
+        elif 'amount_paid_usd' in self.cleaned_data:
+            amount_paid_usd = self.cleaned_data['amount_paid_usd']
+            print("\n This is the form cleaning data")
+            print(amount_paid_usd)
+            print(type(amount_paid_usd))
+            amount_paid_usd = Decimal(amount_paid_usd.replace(',', ''))
+            print(amount_paid_usd)
+            print(type(amount_paid_usd))
+            return amount_paid_usd
+
+    def clean_amount_certified_ngn(self):
+        if 'amount_certified_ngn' in self.cleaned_data:
+            amount_certified_ngn = self.cleaned_data['amount_certified_ngn']
+            print("\n This is the form cleaning data")
+            print(amount_certified_ngn)
+            print(type(amount_certified_ngn))
+            amount_certified_ngn = Decimal(amount_certified_ngn.replace(',', ''))
+            print(amount_certified_ngn)
+            print(type(amount_certified_ngn))
+            return amount_certified_ngn
+        else:
+            raise forms.ValidationError("The amount paid is required!")
+
+    def clean_amount_certified_usd(self):
+        if not 'amount_certified_usd' in self.cleaned_data:
+            amount_certified_usd = 0
+            return amount_certified_usd
+        elif 'amount_certified_usd' in self.cleaned_data:
+            amount_certified_usd = self.cleaned_data['amount_certified_usd']
+            print("\n This is the form cleaning data")
+            print(amount_certified_usd)
+            print(type(amount_certified_usd))
+            amount_certified_usd = Decimal(amount_certified_usd.replace(',', ''))
+            print(amount_certified_usd)
+            print(type(amount_certified_usd))
+            return amount_certified_usd
 
 
 

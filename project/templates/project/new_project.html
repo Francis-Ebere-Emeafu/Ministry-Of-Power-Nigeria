@@ -149,7 +149,7 @@
                       {{ form.lga }}
                       {% endcomment %}
                       <select name="lga" class="form-control" required="False" id="id_lga">
-                        <option value="">---------</option>
+                        <option value="">------</option>
                       </select>
                       <label for="lga">Select LGA</label>
                     </div>
@@ -169,6 +169,15 @@
                     <label for="title">Summary - Optional</label>
                   </div>
                 </div>
+              </div>
+              <div class="col-md-12">
+                <label for="cars">Choose a car:</label>
+                <select name="cars" id="cars">
+                  <option value="volvo">Volvo</option>
+                  <option value="saab">Saab</option>
+                  <option value="mercedes">Mercedes</option>
+                  <option value="audi">Audi</option>
+                </select>
               </div>
               <div class="text-center">
                 <button type="submit" class="btn btn-primary">Submit</button>
@@ -239,5 +248,24 @@ var usd_cleave = Cleave('#contract_sum_usd', {
   numeralThousandsGroupStyle: 'thousand'
 });    
 
+ 
+  $(document).ready(function () {
+    $('#id_state').select2();
+
+      $('#id_language').select2({
+          ajax: {
+              url: '{% url 'home' %}',
+              dataType: 'json',
+              processResults: function (data) {
+                  return {
+                      results: $.map(data, function (item) {
+                          return {id: item.id, text: item.title};
+                      })
+                  };
+              }
+          },
+          minimumInputLength: 1
+      });
+  });
 </script>
 {% endblock extra-js %}

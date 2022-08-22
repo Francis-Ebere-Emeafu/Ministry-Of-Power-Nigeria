@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block head_title %}List of Companies{% endblock head_title %}
+
+
+{% block main %}
+<div class="pagetitle">
+    <h1>All Companies</h1>
+    <nav>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{% url 'profile' %}">Home</a></li>
+        <li class="breadcrumb-item">Company</li>
+        <li class="breadcrumb-item active">List</li>
+      </ol>
+    </nav>
+  </div><!-- End Page Title -->
+  <section class="section">
+    <div class="row">
+      <div class="col-lg-12">
+
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">List of Companies </h5>
+
+            <!-- Table with stripped rows -->
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th scope="col">S/N</th>
+                  <th scope="col">Company Name</th>
+                  <th scope="col">Website</th>
+                  <th scope="col">Email</th>
+                  <th scope="col">Phone</th>
+                  <th scope="col"></th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for company in companies %}
+                <tr>
+                  <th scope="row">{{ forloop.counter }}</th>
+                  <td>{{ company.company_name }}</td>
+                  <td>{{company.website}}</td>
+                  
+                  <td>{{company.email}}</td>
+                  <td>{{company.phone}}</td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="10">There are no companies listed!</td>
+                </tr>
+                {% endfor %}
+                
+              </tbody>
+            </table>
+            <!-- End Table with stripped rows -->
+
+          </div>
+        </div>
+
+ 
+ 
+      </div>
+    </div>
+  </section>
+
+
+  {% endblock main %}
